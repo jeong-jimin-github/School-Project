@@ -15,7 +15,9 @@ box = driver.find_element(by=By.XPATH, value='/html/body/div[1]/div[3]/form/div[
 box.send_keys(query) 
 box.send_keys(Keys.ENTER) #검색어 치고 엔터
  
- 
+if os.path.isdir('./images') == False: #폴더가 이미 존재하는지 확인
+    os.mkdir('./images') #없으면 폴더 생성
+
 for i in range(1, 10): #10번 반복
    
     try:
@@ -39,5 +41,3 @@ for filename in os.listdir(images):
     if os.path.isdir(images + '/' + what) == False: #폴더가 이미 존재하는지 확인
         os.mkdir(images + '/' + what) #없으면 폴더 생성
     shutil.move(images + '/' + filename, images + '/' + what + '/' + filename) #파일 옮기기
-
-
